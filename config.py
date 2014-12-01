@@ -1,5 +1,5 @@
 
-watchdog_parameters = {
+manager_parameters = {
     'circus_endpoint': 'tcp://127.0.0.1:5555',
     'logging':{
         'stdout_stream': 'circus.stream.FileStream',

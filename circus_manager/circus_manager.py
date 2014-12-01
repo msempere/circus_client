@@ -2,14 +2,13 @@
 
 from circus.client import CircusClient
 from circus import get_arbiter
-from circus_manager import config
 
 class CircusManager(object):
 
-    def __init__(self):
+    def __init__(self, config):
         self._arbiter = get_arbiter([])
         self._arbiter.start()
-        self._config = config.watchdog_parameters
+        self._config = config.manager_paramenters
         self._client = CircusClient(timeout=15, endpoint=self._config['circus_endpoint'])
 
 
