@@ -26,7 +26,11 @@ class CircusManager(object):
                 'args':arguments,
                 'options':{
                     'singleton': True,
-                    'shell': True,
+                    'stop_children': True,
+                    'stop_signal': 9,
+                    'env': self._config.get('environment', {}),
+                    'graceful_timeout': self._config['graceful_timeout'],
+                    'max_retry': self._config['max_retry'],
                     'stdout_stream': {
                         'class': self._config['logging']['stdout_stream'],
                         'filename': '{path}/{filename}.{ext}'.format(path=self._config['logging']['path'],
@@ -65,11 +69,12 @@ class CircusManager(object):
         })
 
 
-    def remove_application(self, name):
+    def remove_application(self, name, nonstop=False):
         response = self.__call({
             'command': 'rm',
             'properties':{
                 'name': name,
+                'nonstop': nonstop,
                 'waiting': False
             }
         })
