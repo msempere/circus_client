@@ -6,7 +6,14 @@ manager_parameters = {
         'stderr_stream': 'circus.stream.FileStream',
         'stderr_extension': 'err',
         'stdout_extension': 'out',
-        'path': '/tmp',
+        'path': '/mnt/logs/agentgateway/agents',
     },
-    'stop_signal': 9
+    'stop_signal': 9,
+    'graceful_timeout': 5,
+    'max_retry': 10,
+    'environment': {
+        'PATH':"/home/rtbkit/local/bin",
+        'LD_LIBRARY_PATH':"/home/rtbkit/local/lib",
+        'PKG_CONFIG_PATH':"/home/rtbkit/local/lib/pkgconfig/:/home/rtbkit/local/lib/pkg-config/"
+    }
 }
