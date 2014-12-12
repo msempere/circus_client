@@ -80,6 +80,18 @@ class CircusManager(object):
         })
         return True if response['status'] == u'ok' else False
 
+    def reload_application(self, name, waiting=False, graceful=True, sequential=False):
+        response = self.__call({
+            'command': 'reload',
+            'properties':{
+                'name': name,
+                'graceful': graceful,
+                'sequential': sequential,
+                'waiting': waiting
+            }
+        })
+        return True if response['status'] == u'ok' else False
+
 
     def start_application(self, name, waiting=False):
         response = self.__call({
