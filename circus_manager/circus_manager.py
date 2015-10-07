@@ -6,8 +6,8 @@ from circus import get_arbiter
 class CircusManager(object):
 
     def __init__(self, config):
-        self._arbiter = get_arbiter([])
-        self._arbiter.start()
+        #self._arbiter = get_arbiter([])
+        #self._arbiter.start()
         self._config = config
         self._client = CircusClient(timeout=15, endpoint=self._config['circus_endpoint'])
 
